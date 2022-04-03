@@ -14,7 +14,7 @@ jobs:
           node-version: '16'
 
       - name: Chrome deps
-        run: sudo apt-get update ; sudo apt-get install -y sudo chromium unzip
+        run: sudo apt-get update ; sudo apt-get install -y chromium-browser unzip
       
       - name: Install Lighthouse
         run: npm install -g lighthouse
@@ -28,5 +28,5 @@ jobs:
           git add lighthouse/
           git config user.name "Automated Github Action"
           git config user.email "<>"
-          git -c core.fileMode=false commit --message "Update site quality metrics"
+          git commit --message "Update site quality metrics"
           git push origin/master
