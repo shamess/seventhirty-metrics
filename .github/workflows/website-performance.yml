@@ -1,0 +1,34 @@
+name: Collect Lighthouse metrics
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Chrome deps
+        run: apt-get update ; apt-get install -y sudo chromium unzip
+      
+      - name: Install Lighthouse
+        run: npm install -g lighthouse
+
+      - name: Run and store Lighthouse output
+        run: |
+          useradd metrics
+          chmod 777 lighthouse/
+          sudo -u metrics env "PATH=$PATH" lighthouse --output json --output-path lighthouse/latest.json --chrome-flags="--no-sandbox --headless --disable-gpu" https://seventhirty.dev
+
+      - name: Commit the updated reports
+        run: |
+          git add lighthouse/
+          git config user.name "Automated Github Action"
+          git config user.email "<>"
+          git -c core.fileMode=false commit --message "Update site quality metrics"
+          git push origin/master
