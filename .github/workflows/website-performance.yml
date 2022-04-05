@@ -24,6 +24,19 @@ jobs:
           lighthouse --output json --output-path lighthouse/latest.json --chrome-flags="--no-sandbox --headless --disable-gpu" https://seventhirty.dev
           cp lighthouse/latest.json lighthouse/`date +"%y-%m-%d"`.json
 
+      - name: Clean away older reports
+        run: |
+          retention_cutoff=...
+          for report in `find lighthouse -name '*.json'`
+          do
+            size=${#report}
+
+            if [ $size -eq 24 ]; then
+              report_date=${report:11:19}
+              echo $report_date
+            fi
+          done
+
       - name: Commit the updated reports
         run: |
           git add lighthouse/
