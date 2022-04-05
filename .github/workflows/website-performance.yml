@@ -2,6 +2,8 @@ name: Collect Lighthouse metrics
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '25 7 * * *'
 
 jobs:
   build:
@@ -22,6 +24,10 @@ jobs:
       - name: Run and store Lighthouse output
         run: |
           lighthouse --output json --output-path lighthouse/latest.json --chrome-flags="--no-sandbox --headless --disable-gpu" https://seventhirty.dev
+          cp lighthouse/latest.json lighthouse/`date +"%y-%m-%d"`.json
+
+      - name: Clean away older reports
+        run: find lighthouse/ -type f -mtime +31 -name '*.json' -execdir rm -- '{}' \;
 
       - name: Commit the updated reports
         run: |
