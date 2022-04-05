@@ -2,6 +2,8 @@ name: Collect Lighthouse metrics
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '25 7 * * *'
 
 jobs:
   build:
