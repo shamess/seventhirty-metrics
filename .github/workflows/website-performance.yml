@@ -22,7 +22,7 @@ jobs:
       - name: Run and store Lighthouse output
         run: |
           lighthouse --output json --output-path lighthouse/latest.json --chrome-flags="--no-sandbox --headless --disable-gpu" https://seventhirty.dev
-          cp lighthouse/latest.json `date +"%y-%m-%d"`
+          cp lighthouse/latest.json lighthouse/`date +"%y-%m-%d"`.json
 
       - name: Commit the updated reports
         run: |
