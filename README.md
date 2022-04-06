@@ -9,4 +9,4 @@ Here are collected and displayed metrics here for a [https://seventhirty.dev].
 
 These are shown per day, from newest report to oldest.
 
-<!-- lcp -->|2.6 s | ✅ 2.6 s | 2.9 s|<!-- /lcp -->
+<!-- lcp -->|2.6 s | ✅ 2.6 s | ✅ 2.6 s | 2.9 s|<!-- /lcp -->
