@@ -1,0 +1,25 @@
+name: Collect Lighthouse metrics
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 8 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-ruby@v1
+
+      - name: Run scripts to repopulate README
+        run: ruby lib/render-largest-contentful-paint.rb
+
+      - name: Save and update repo
+        run: |
+          git add README.md
+          git config user.name "Automated Github Action"
+          git config user.email "<>"
+          git commit --message "Update README with daily stats"
+          git push origin HEAD:main
