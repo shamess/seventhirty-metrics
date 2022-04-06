@@ -1,4 +1,4 @@
-name: Collect Lighthouse metrics
+name: Collate metrics
 
 on:
   workflow_dispatch:
