@@ -3,7 +3,7 @@ name: Collate metrics
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 8 * * *'
+    - cron: '3 8 * * *'
 
 jobs:
   build:
