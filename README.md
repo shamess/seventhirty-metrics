@@ -10,7 +10,7 @@ Here are collected and displayed metrics here for a [https://seventhirty.dev].
 These are shown per day, from newest report to oldest.
 
 <!-- lcp -->
-22-04-07 | 22-04-06 | 22-04-05 | 22-04-04
----|---|---|---
-✅ 2.6 s | ✅ 2.6 s | ✅ 2.6 s | 2.9 s
+22-04-08 | 22-04-07 | 22-04-06 | 22-04-05 | 22-04-04
+---|---|---|---|---
+❌ 2.6 s | ✅ 2.6 s | ✅ 2.6 s | ✅ 2.6 s | 2.9 s
 <!-- /lcp -->
