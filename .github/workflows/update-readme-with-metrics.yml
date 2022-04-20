@@ -6,8 +6,18 @@ on:
     - cron: '3 8 * * *'
 
 jobs:
+  collect-metrics:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: ./.github/workflows/website-performance.yml
+        with:
+          branch: workflows
+
+
   build:
     runs-on: ubuntu-20.04
+    needs: [collect-metrics]
 
     steps:
       - uses: actions/checkout@v3
