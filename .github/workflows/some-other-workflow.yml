@@ -9,4 +9,7 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
-      - run: echo "Hey there"
+      - uses: actions/checkout@v3
+      - run: git status
+      - run: git log
+      - run: git remote -v
