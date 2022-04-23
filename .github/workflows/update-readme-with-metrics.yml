@@ -7,15 +7,12 @@ on:
 
 jobs:
   collect-metrics:
-    runs-on: ubuntu-20.04
-
-    steps:
-      - uses: ./.github/workflows/website-performance.yml
-        with:
-          branch: workflows
+    name: Collect website performance
+    uses: ./.github/workflows/website-performance.yml
 
 
   build:
+    name: Generate reports
     runs-on: ubuntu-20.04
     needs: [collect-metrics]
 
