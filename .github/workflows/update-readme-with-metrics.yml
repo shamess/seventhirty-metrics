@@ -6,6 +6,10 @@ on:
     - cron: '3 8 * * *'
 
 jobs:
+  hello:
+    name: Says hello
+    uses: ./.github/workflows/some-other-workflow.yml
+
   collect-metrics:
     name: Collect website performance
     uses: ./.github/workflows/website-performance.yml
@@ -14,7 +18,7 @@ jobs:
   build:
     name: Generate reports
     runs-on: ubuntu-20.04
-    needs: [collect-metrics]
+    needs: [hello, collect-metrics]
 
     steps:
       - uses: actions/checkout@v3
